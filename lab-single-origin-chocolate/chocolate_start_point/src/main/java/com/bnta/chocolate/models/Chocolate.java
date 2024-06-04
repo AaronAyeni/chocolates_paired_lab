@@ -1,5 +1,7 @@
 package com.bnta.chocolate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +18,9 @@ public class Chocolate {
     @Column(name = "cocoa_percentage")
     private int cocoaPercentage;
 
-    @OneToMany(mappedBy = "chocolate")
+    @ManyToOne
+    @JsonIgnoreProperties({"chocolates"})
+    @JoinColumn(name = "estate_id")
     private Estate estate;
 
     public Chocolate(String name, int cocoaPercentage, Estate estate) {
