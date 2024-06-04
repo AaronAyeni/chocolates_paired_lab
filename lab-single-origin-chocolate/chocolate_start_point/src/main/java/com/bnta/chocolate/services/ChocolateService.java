@@ -26,4 +26,8 @@ public class ChocolateService {
         return chocolateRepository.save(chocolate);
     }
 
+//method to call the derived query in the chocolate repo
+    public List<Chocolate> getChocolatesByCocoaPercentage(int cocoaPercentage) {
+        return chocolateRepository.findByCocoaPercentageGreaterThanEqual(cocoaPercentage);
+    }
 }
